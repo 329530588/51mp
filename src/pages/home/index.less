@@ -1,0 +1,28 @@
+/**
+ * @fileOverview 首页脚本
+ * @author sizhao | 870301137@qq.com
+ * @version 1.0.0 | 2018-06-25 | sizhao
+*/
+
+.home {
+  padding: 40rpx 32rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+
+  .panel {
+    margin-top: 30rpx;
+    &::before {
+      content: attr(data-title);
+      display: block;
+      padding: 15rpx 0;
+      border-bottom: 1rpx solid #f2f2f2;
+      margin-bottom: 20rpx;
+    }
+
+    .wechat {
+      font-size: 42rpx;
+      color: #53AA3A;
+    }
+  }
+}

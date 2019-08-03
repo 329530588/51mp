@@ -1,16 +1,42 @@
 {
-	"description": "A WePY project",
+	"description": "Pandorajs wechat miniprogram boilplate.",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": false
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
 	},
 	"compileType": "miniprogram",
+	"libVersion": "2.1.1",
 	"appid": "wx4e2de5141a19a31d",
-	"projectname": "51py",
-	"miniprogramRoot": "weapp/",
+	"projectname": "51mp",
+	"miniprogramRoot": "dist/",
+	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
 }

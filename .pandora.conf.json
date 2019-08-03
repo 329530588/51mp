@@ -1,0 +1,30 @@
+{
+  "templates": {
+    "page": "src/pages",
+    "component": "src/components"
+  },
+  "components": [
+    {
+      "name": "vant-weapp",
+      "path": "dist",
+      "dependencies": [
+        "mixins",
+        "common",
+        "wxs"
+      ]
+    }
+  ],
+  "boilerplate": {
+    "name": "@pandolajs/pandora-boilerplate-wechat",
+    "version": "0.5.1",
+    "keywords": [
+      "pandora-boilerplate",
+      "wechat",
+      "miniprogram"
+    ]
+  },
+  "user": {
+    "name": "",
+    "email": ""
+  }
+}

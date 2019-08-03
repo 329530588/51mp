@@ -1,3 +1,11 @@
-node_modules/
-weapp/
+.DS_Store
+.idea
+build
+coverage
+node_modules
+npm-debug.log
+yarn-error.log
 .vscode
+yarn.lock
+dist
+.pandora

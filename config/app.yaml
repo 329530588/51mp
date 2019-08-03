@@ -1,0 +1,11 @@
+appId: 'wx4e2de5141a19a31d'
+appName: '51mp'
+version: '1.0.0'
+development:
+  env: 'development'
+test:
+  env: 'test'
+preproduction:
+  env: 'preproduction'
+production:
+  env: 'production'

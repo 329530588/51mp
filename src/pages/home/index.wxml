@@ -1,0 +1,14 @@
+<!-- 
+  @fileOverview 首页模板
+  @author sizhao | 870301137@qq.com
+  @version 1.0.0 | 2018-06-25 | sizhao   // 初始版本
+ -->
+
+ <view class="home">
+   Hello, Pandolajs!
+
+   <view class="panel" data-title="字体图标">
+     <text class="icon-font icon-font_wechat wechat"></text>
+     <van-button type="primary">默认按钮</van-button>
+   </view>
+ </view>
