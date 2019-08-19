@@ -1,5 +1,10 @@
 {
   "pages":[
+    "pages/challengeDetail/index",
+    "pages/newChallenge/index",
+    "pages/myMessage/index",
+    "pages/withdrawRecord/index",
+    "pages/myProfile/index",
     "pages/home/index"
   ],
   "window":{

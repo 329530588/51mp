@@ -5,7 +5,28 @@
 */
 
 App({
-  onLaunch: function () {
-    
-  }
-})
+  onLaunch: function() {
+    const self = this;
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: `${getApp().SERVER}/user/session`,
+            data: {
+              code: res.code
+            },
+            success(res) {
+              console.log(res)
+            }
+          });
+          self.user = res;
+        } else {
+          alter("登录失败！" + res.errMsg);
+        }
+      }
+    });
+  },
+  user: null,
+  SERVER: "http://116.62.241.153:6161"
+});

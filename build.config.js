@@ -10,6 +10,6 @@ module.exports = {
     component: 'src/components',
     config: 'src/config/index.js',
     service: 'src/services',
-    stat: 'src/stat',
+    lib: 'src/lib',
   }
 }

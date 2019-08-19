@@ -1,10 +1,17 @@
 /**
  * @fileOverview 工具方法
- * @author sizhao | 870301137@qq.com
  * @version 1.0.0 | 2018-06-25 | sizhao
 */
 
-export const sayHello = () => {
-  console.log('Hello, Pandolajs!')
-  return '你好'
+const formatTime = function (input) {
+  const date = new Date(input); //返回当前时间对象
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  
+  return [year, month, day].join('-')
+}
+ 
+module.exports = {
+  formatTime
 }

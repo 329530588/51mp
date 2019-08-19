@@ -1,14 +1,149 @@
-<!-- 
-  @fileOverview 首页模板
-  @author sizhao | 870301137@qq.com
-  @version 1.0.0 | 2018-06-25 | sizhao   // 初始版本
- -->
+
 
  <view class="home">
-   Hello, Pandolajs!
+    <van-search value="{{ active }}" placeholder="请输入搜索关键词" shape="round" />
+  
+    <van-tabs active="{{ active }}" bind:change="onChangeTab">
+      <van-tab title="进行中"></van-tab>
+      <van-tab title="未开始"></van-tab>
+      <van-tab title="已结束"></van-tab>
+    </van-tabs>
 
-   <view class="panel" data-title="字体图标">
-     <text class="icon-font icon-font_wechat wechat"></text>
-     <van-button type="primary">默认按钮</van-button>
-   </view>
+    <view 
+      wx:if="{{[1,3,3,3,3].length}}"  
+     > 
+        <navigator url="/pages/challengeDetail/index">
+          <view class="home-card" wx:for="{{[1,3,3,3,3]}}" style="background: url('../../images/card.png') no-repeat; background-size: 100%">
+            <view class="home-card-mask">
+            </view>
+
+            <view class="home-card-mask-info" wx:if="{{active !== 2}}" >
+              <view class="home-card-mask-info-day">
+                已坚持<text class="f-red">2</text>天
+              </view>
+              <view class="home-card-mask-info-progress-cnt" >
+                <view>进度 7/21天</view>
+                <van-progress percentage="50" class="home-card-mask-info-progress"/>
+              </view>
+            </view>
+
+            <view class="home-card-info" wx:if="{{active === 0}}">
+              <view class="home-card-info-title" >
+                <view>
+                  21天跑步计划
+                  <text class="f-red f-size12">（奖金池: ¥3000）</text>
+                </view>
+                <van-button type="info"  round size="mini">
+                  打卡
+                </van-button>
+                <!-- <van-button type="info"  round size="mini" disabled>
+                  已打卡
+                </van-button>
+                <van-button type="primary"  round size="mini">
+                  时辰未到
+                </van-button>
+                <van-button type="primary"  round size="mini">
+                  错过打卡
+                </van-button> -->
+              </view>
+              <view class="home-card-info-detail">
+                <view>
+                  <van-icon name="clock-o" />
+                  打卡时间：00:00-24:00
+                </view>
+                <view>
+                  <van-icon name="completed" />
+                  已打卡：4/15人
+                </view>
+              </view>
+            </view>
+
+            <view class="home-card-info" wx:elif="{{active === 1}}">
+              <view class="home-card-info-title" >
+                <view>
+                  21天跑步计划
+                </view>
+                <view class="f-size12 f-gray">
+                  <van-icon name="gold-coin" />
+                  契约金 ¥30
+                </view>
+              </view>
+              <view class="home-card-info-detail">
+                <view>
+                  <van-icon name="flag-o" />
+                  开始时间：2019.05.01
+                </view>
+                <view>
+                  <van-icon name="user-o" />
+                  已参与：201人
+                </view>
+              </view>
+            </view>
+
+            <view class="home-card-info" wx:else="{{active === 2}}">
+              <view class="home-card-info-title" >
+                <view>
+                  21天跑步计划
+                </view>
+                <image class="home-card-info-title-img" wx:if="{{1}}" src="../../images/succ.png" />
+                <image class="home-card-info-title-img" wx:else src="../../images/fail.png" />
+              </view>
+              <view class="home-card-info-detail">
+                <view>
+                  <van-icon name="star" />
+                  成功：13人 失败：5人
+                </view>
+                <view>
+                  <van-icon name="gold-coin" />
+                  奖金：<text class="{{ 1 ? 'f-blue' : 'f-red' }}">¥30</text>
+                </view>
+              </view>
+            </view>
+            
+          </view>
+        </navigator>
+    </view>
+
+    <view wx:else> 
+      <image class="home-img" mode="widthFix" src="../../images/home.default.png"></image>
+      <navigator url="/pages/newChallenge/index" class="main-btn">
+        <van-button type="primary"  round block>
+          发起挑战
+        </van-button>
+      </navigator>
+    </view>
+
+    <view class="home-footer">
+      <view>
+        <image src="../../images/footer.challenge.active.png" />
+        挑战
+      </view>
+      <view >
+        <navigator url="/pages/newChallenge/index">
+          <image class="home-footer-add" src="../../images/footer.add.png" />
+        </navigator>
+      </view>
+      <view>
+        <navigator url="/pages/myProfile/index">
+          <image src="../../images/footer.me.png" />
+        </navigator>
+        我的
+      </view>
+    </view>
+
+    <van-dialog
+      className="home-toast"
+      use-slot
+      title="赢取挑战金"
+      show="{{false}}"
+      confirm-button-open-type="getUserInfo"
+      bind:getuserinfo="getUserInfo"
+    >
+      <view class="home-toast-cnt">
+        <image class="home-toast-img" mode="widthFix" src="../../images/new.toast.png" />
+        <view class="home-toast-tips">
+          邀请好友挑战，每人贡献一笔挑战金，挑战成功即可瓜分失败者的挑战金
+        </view>
+      </view>
+    </van-dialog>
  </view>

@@ -1,0 +1,229 @@
+
+
+.challenge-detail {
+  position: relative;
+  &-mask {
+    width: 100%;
+    height: 350rpx;
+    background: rgba(0, 0, 0, 0.5);
+    &-info {
+      position: absolute;
+      top: 0;
+      font-size: 24rpx;
+      width: 100%;
+      color: #fff;
+      &-progress-cnt {
+        position: absolute;
+        top: 250rpx;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 30rpx;
+        font-weight: bold;
+      }
+    }
+  }
+  &-main {
+    position: absolute;
+    top: 330rpx;
+    padding: 40rpx;
+    background: white;
+    border-radius: 22rpx;
+    .title {
+      font-size: 36rpx;
+    }
+    .info-item {
+      display: flex;
+      flex-wrap: wrap;
+      color: rgb(205, 205, 205);
+      font-size: 24rpx;
+      margin-top: 46rpx;
+      & > view {
+        flex: 1;
+        flex-basis: 50%;
+        margin-bottom: 18rpx;
+      }
+    }
+    .money-info {
+      display: flex;
+      button {
+        width: 185rpx;
+        height: 48rpx;
+        margin-right: 20rpx;
+        line-height: 48rpx;
+      }
+      .rule {
+        margin-left: 50rpx;
+        color: #0395FF;
+        font-size: 24rpx;
+        line-height: 60rpx;
+        text-decoration: underline;
+      }
+    }
+    .desc {
+      margin-top: 48rpx;
+      font-size: 24rpx;
+      text-align: justify;
+      line-height: 48rpx;
+      padding-bottom: 48rpx;
+      opacity: 0.7;
+      border-bottom: 1px solid rgb(205, 205, 205);
+    }
+
+    .punch-info {
+      padding-top: 50rpx;
+      padding-bottom: 50rpx;
+      .title {
+        display: flex;
+        align-items: center;
+
+        .note {
+          display: flex;
+          font-size: 24rpx;
+          color: #000000;
+        }
+      }
+      .punch-list {
+        .punch-list-item {
+          display: flex;
+          font-size: 24rpx;
+          padding-top: 30rpx;
+          padding-bottom: 30rpx;
+          border-bottom: 1px solid rgb(205, 205, 205);
+          .avatar {
+            width: 64rpx;
+            height: 64rpx;
+            border-radius: 32rpx;
+          }
+          .mid {
+            flex: 1;
+            padding-left: 20rpx;
+            .username {
+              display: flex;
+              van-button {
+                margin-left: 20rpx;
+              }
+            }
+            .persist {
+              font-size: 20rpx;
+              color:rgb(205, 205, 205);
+            }
+          }
+          .time  {
+            font-size: 20rpx;
+            color:rgb(205, 205, 205);
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    & > van-button {
+      flex: 1;
+      button {
+        border-radius: 0;
+        border: 0;
+      }
+    }
+  }
+
+  .book-cnt {
+    position: relative;
+    .challenge-detail-mask {
+      height: 300rpx;
+    }
+    .challenge-detail-mask-info {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 220rpx;
+      left: 30rpx;
+      height: 70rpx;
+
+      .avatar {
+        width: 64rpx;
+        height: 64rpx;
+        border-radius: 50%;
+      }
+      .username {
+        margin-left: 12rpx;
+        margin-right: 12rpx;
+      }
+    }
+    .challenge-info {
+      padding: 24rpx 30rpx;
+      .title {
+        font-size: 40rpx;
+      }
+      .table {
+        margin-top: 24rpx;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        .top {
+          color: #333;
+          opacity: 0.6;
+          font-size: 26rpx;
+        }
+        .bottom {
+          margin-top: 24rpx;
+          font-size: 34rpx;
+        }
+      }
+      .tips {
+        text-align: center;
+        margin-top: 60rpx;
+        font-size: 32rpx;
+        opacity: 0.6; 
+      }
+    }
+    .book-footer {
+      background: rgb(171, 218, 255);
+      padding: 36rpx 0;
+      display: flex;
+      justify-content: center;
+      image {
+        width: 130rpx;
+        height: 130rpx;
+      }
+      .info {
+        margin: 20rpx 0;
+        margin-left: 20rpx;
+        .title {
+          color: #333;
+          font-size: 44rpx;
+        }
+        .tips {
+          color: #666;
+          font-size: 28rpx;
+        }
+      }
+    }
+  }
+
+  .share-panel {
+    display: flex;
+    padding-top: 50rpx;
+    padding-bottom: 50rpx;
+    & > view {
+      flex: 1;
+      text-align: center;
+      font-size: 24rpx;
+      color: #333333;
+      image {
+        width: 148rpx;
+        height: 148rpx;
+      }
+      button {
+        background: white;
+        &::after {
+          border: 0;
+        }
+      }
+    }
+  }
+
+}

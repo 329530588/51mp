@@ -1,0 +1,19 @@
+
+
+ <view class="account">
+   <view class="title">当前余额（元）</view>
+   <view class="money">
+     <view>{{ money }}</view>
+     <navigator class="records" url="/pages/myMessage/index">
+      <view class="label">
+        <van-icon name="records"></van-icon>
+      </view>
+     </navigator>
+   </view>
+   <view class="withdraw">
+     <van-button type="primary"  round block disabled="{{ money <= 0 }}">
+      提现
+    </van-button>
+   </view>
+   <view class="note">注：提现到账，微信将收取0.6%的手续费，51挑战将不再收取任何费用。</view>
+ </view>

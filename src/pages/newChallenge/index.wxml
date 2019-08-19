@@ -1,0 +1,148 @@
+
+
+ <view class="newChallenge">
+    <van-cell-group>
+      <van-field
+        value="{{ project }}"
+        id="project"
+        placeholder="每周健身3次/本赛季上一个王者/早睡早起"
+        label="挑战名称"
+        border
+        bind:change="setChallengeData"
+      />
+    </van-cell-group>
+
+    <view class="form-cell box">
+      <van-cell-group >
+        <view class="newChallenge-img-uploader">
+          <view>封面配图</view>
+          <view wx:if="{{ faceImage }}">
+            <image src="{{ faceImage }}" />
+          </view>
+          <view wx:else class="upload-btn" bind:tap="uploadImg">
+            <van-icon name="plus" />
+          </view>
+        </view>
+        <view class="newChallenge-img-uploader">
+          <text>描述</text>
+          <textarea
+            value="{{ description }}"
+            id="description"
+            placeholder="必填，500个字以内"
+          />
+        </view>
+      </van-cell-group>
+    </view>
+
+    <view class="form-cell">
+      <van-cell-group class="form-cell">
+        <van-field
+          value="{{ amount }}"
+          id="amount"
+          placeholder="请输入"
+          type="number"
+          label="挑战金额"
+          border
+          bind:change="setChallengeData"
+        >
+          <view slot="button">元</view>
+        </van-field>
+        <van-field
+          value="{{ displayDate }}"
+          id="dateStart"
+          placeholder="2019.05.01"
+          label="挑战时间"
+          border
+          readonly
+          bind:tap="toggleDateDrawer"
+        />
+        <van-field
+          value="{{ totalDays }}"
+          id="totalDays"
+          placeholder="必填，请输入正整数"
+          label="挑战天数"
+          type="number"
+          border
+          bind:change="setChallengeData"
+        >
+          <view slot="button">天</view>
+        </van-field>
+        <view style="display: flex">
+          <van-field
+            value="{{ cardStart }}"
+            id="cardStart"
+            placeholder="00:00"
+            label="每日打卡时间段"
+            title-width="240rpx"
+            border
+            readonly
+            bind:tap="toggleStartTimeDrawer"
+          />
+          <van-field
+              value="{{ cardEnd }}"
+              id="cardEnd"
+              placeholder="24:00"
+              label="至"
+              title-width="40rpx"
+              border
+              readonly
+              slot="button"
+              bind:tap="toggleEndTimeDrawer"
+            />
+        </view>
+
+        <van-field
+          value="{{ days }}"
+          placeholder="必填，请输入正整数"
+          id="days"
+          label="累计打卡N天视为成功"
+          type="number"
+          border
+          title-width="320rpx"
+          bind:change="setChallengeData"
+        >
+          <view slot="button">天</view>
+        </van-field>
+      </van-cell-group>
+    </view>
+
+    <view class="form-cell box footer">
+      <text>打卡需上传图片：</text>
+      <van-cell-group class="form-cell">
+        <van-radio-group id="isImage" value="{{ isImage }}" bind:change="setChallengeData">
+          <van-radio name="1">是</van-radio>
+          <van-radio name="0">否</van-radio>
+        </van-radio-group>
+        <van-button type="primary" block bind:tap="submitChallenge">开始挑战</van-button>
+      </van-cell-group>
+    </view>
+
+    <van-popup show="{{showDatePicker}}" position="bottom" bind:close="toggleDateDrawer">
+      <van-datetime-picker
+        type="date"
+        id="dateStart"
+        value="{{ dateStart }}"
+        min-date="{{ minDate }}"
+        bind:confirm="setDate"
+      />
+    </van-popup>
+
+    <van-popup show="{{showStartTimePicker}}" position="bottom" bind:close="toggleStartTimeDrawer">
+      <van-datetime-picker
+        type="time"
+        id="cardStart"
+        value="{{ cardStart }}"
+        bind:confirm="setStartTime"
+      />
+    </van-popup>
+    
+    <van-popup show="{{showEndTimePicker}}" position="bottom" bind:close="toggleEndTimeDrawer">
+      <van-datetime-picker
+        type="time"
+        id="cardEnd"
+        value="{{ cardEnd }}"
+        bind:confirm="setEndTime"
+      />
+    </van-popup>
+
+ </view>

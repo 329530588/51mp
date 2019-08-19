@@ -1,1 +1,20 @@
 @import './icon-font.wxss';
+
+.f-red {
+  color: #FF4D4Ded;
+}
+.f-size12 {
+  font-size: 24rpx;
+}
+.f-gray {
+  color: rgb(204, 204, 204)
+}
+.f-blue {
+  color: rgb(3, 149, 255);
+}
+.b-blue {
+  background-color: rgb(3, 149, 255);
+}
+.gray-btn button {
+  background: gray;
+}

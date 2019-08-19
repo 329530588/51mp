@@ -1,0 +1,57 @@
+
+
+ <view class="my-profile">
+   <view class="info">
+    <image class="avatar" src="../../images/new.toast.png" />
+    <view class="mid">
+      <view class="username">
+        欢乐的小飞机zero...
+      </view>
+      <view class="persist">挑战自我，快乐生活</view>
+    </view>
+  </view>
+
+  <view class="links">
+    <navigator url="/pages/myAccount/index">
+      <view class="link">
+        <view class="l">
+          <van-icon name="gold-coin-o" />
+          <view>账户</view>
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </navigator>
+    <navigator url="/pages/myMessage/index">
+      <view class="link">
+        <view class="l">
+          <van-icon name="chat-o" />
+          <view>消息</view>
+        </view>
+        <view class="r">
+          <view class="msg-bubble">
+            6
+          </view>
+          <van-icon name="arrow" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+   <view class="footer">
+    <view>
+      <image src="../../images/footer.challenge.png" />
+      挑战
+    </view>
+    <view >
+      <navigator url="/pages/newChallenge/index">
+        <image class="footer-add" src="../../images/footer.add.png" />
+      </navigator>
+    </view>
+    <view>
+      <navigator url="/pages/myProfile/index">
+        <image src="../../images/footer.me.active.png" />
+      </navigator>
+      我的
+    </view>
+  </view>
+ </view>

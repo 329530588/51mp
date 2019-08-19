@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "发起挑战",
+  "usingComponents": {
+    "van-field": "../../lib/vanui/dist/field/index",
+    "van-radio": "../../lib/vanui/dist/radio/index",
+    "van-icon": "../../lib/vanui/dist/icon/index",
+    "van-radio-group": "../../lib/vanui/dist/radio-group/index",
+    "van-button": "../../lib/vanui/dist/button/index",
+    "van-popup": "../../lib/vanui/dist/popup/index",
+    "van-datetime-picker": "../../lib/vanui/dist/datetime-picker/index"
+  }
+}

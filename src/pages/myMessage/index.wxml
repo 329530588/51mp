@@ -1,0 +1,24 @@
+
+
+ <view class="message">
+   <view class="empty" wx:if="{{ messages.length === 0 }}">
+      <image src="../../images/empty.msg.png" />
+      <view class="note">空空如也，毫无悬念</view>
+   </view>
+   <view class="msg-item" wx:for="{{ messages }}">
+      <view class="top">
+        <view class="title-cnt">
+          <view class="label">{{'胜' || '败' || '消' || '灭'}}</view>
+          <view class="title">
+            {{'挑战成功' || '挑战失败' || '挑战取消' || '全员挑战失败'}}
+          </view>
+        </view>
+        <view class="time">1分钟前</view>
+      </view>
+      <view class="content">恭喜您，21天健身计划挑战成功，您将获得¥200.00的挑战奖金。</view>
+      <!-- 非常遗憾，欢乐瑜伽100天您挑战失败，您的契约金¥100.00已贡献给其他挑战者。 -->
+      <!-- 非常遗憾，二话不说游泳就是干挑战已取消，您的契约金¥100.00已退回您的账户，您可以自行发起新的挑战！ -->
+      <!-- 非常遗憾，100天减肥计划所有成员挑战失败，您契约金的80%，即¥160.00已退回您的账户。 -->
+      <navigator class="view" url="/pages/challengeDetail/index">去查看 ></navigator>
+    </view> 
+ </view>

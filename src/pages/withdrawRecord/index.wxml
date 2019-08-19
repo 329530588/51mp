@@ -1,0 +1,13 @@
+
+
+ <view class="withdraw">
+    <view class="record-item" wx:for="{{[1,3,3,3]}}">
+      <view>
+        <view class="action">{{ '提现' || '契约金赎回' }}</view>
+        <view class="time">
+          <text>2019.04.01    10:27</text>
+        </view>
+      </view>
+      <view class="money {{ 300 > 0 ? 'f-blue' : '' }}">-300.00</view>
+    </view> 
+ </view>

@@ -1,0 +1,172 @@
+
+
+ <view class="challenge-detail">
+  <view style="background: url('../../images/card.png') no-repeat; background-size: 100%">
+    <view class="challenge-detail-mask"></view>
+    <view class="challenge-detail-mask-info" wx:if="{{active !== 2}}" >
+      <view class="challenge-detail-mask-info-progress-cnt" >
+        <view style="margin-bottom: 12rpx">进度 7/21天</view>
+        <van-progress percentage="50" class="challenge-detail-mask-info-progress"/>
+      </view>
+    </view>
+  </view>
+  <view class="challenge-detail-main">
+    <view class="title">21天跑步计划</view>
+
+    <view class="info-item">
+      <view>
+        <van-icon name="flag-o" />
+        开始时间：2019.05.01
+      </view>
+      <view>
+        <van-icon name="notes-o" />
+        挑战天数：21天
+      </view>
+      <view>
+        <van-icon name="clock" />
+        打卡时间：00:00-24:00
+      </view>
+      <view>
+        <van-icon name="award-o" />
+        已打卡：4/15人
+      </view>
+    </view>
+
+    <view class="money-info">
+      <van-button type="info"  round size="mini">
+        挑战金：¥300
+      </van-button>
+      <van-button type="danger"  round size="mini">
+        奖金池：¥5000
+      </van-button>
+      <view class="rule" bind:tap="toggleRules">规则</view>
+    </view>
+
+    <view class="desc">跑步是日常最方便的有氧运动之一，受到了广大人民群众的喜欢。有些人喜欢夜跑，也有些人喜欢晨跑，但是不管是哪种运动的方式，对于锻炼身体来说，都是有好处的。大多数的运动爱好者已经将跑步看成了生命中的一部分了。对于他们来说，跑步不在乎时间和长短，在意的是收获的好处，在意的是跑步的时候能够将所有的烦恼给跑掉。虽然跑步的好处非常的颇多，但是也是需要注意它的几点禁忌的，下面就一起去了解一下吧！</view>
+
+    <view class="punch-info">
+      <view class="title">
+        今日打卡情况
+        <view class="note">（已打卡 <text class="f-blue">3</text>  未打卡 <text class="f-red">2</text>）</view>
+      </view>
+
+      <view class="punch-list">
+        <view class="punch-list-item" wx:for="{{[1,3,3,3,3]}}">
+          <image class="avatar" src="../../images/succ.png" />
+          <view class="mid">
+            <view class="username">
+              <view>欢乐的小飞机zero...</view>
+              <van-button type="info"  round size="mini">
+                发起者
+              </van-button>
+            </view>
+            <view class="persist">已坚持1天</view>
+          </view>
+          <view class="time">{{'07:00' || '今日未打卡'}}</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="footer" wx:if="{{0}}">
+    <!-- 打卡 -->
+    <van-button class="gray-btn" type="info" block>
+      分享战况
+    </van-button>
+    <van-button type="info" block bind:tap="addCardRecord">
+      打卡
+    </van-button>
+  </view>
+
+  <view class="footer" wx:elif="{{0}}">
+    <!-- 被邀请方 -->
+    <van-button type="info" block bind:tap="participateIn">
+      我要挑战
+    </van-button>
+  </view>
+
+  <view class="footer" wx:else>
+    <!-- 发起方 -->
+    <van-button class="gray-btn" type="info" block bind:tap="deleteChallenge">
+      删除挑战
+    </van-button>
+    <van-button type="info" block bind:click="onShowShareSheet">
+      邀请好友
+    </van-button>
+  </view>
+
+  <van-action-sheet
+    show="{{ showShareSheet }}"
+    actions="{{ actions }}"
+    cancel-text="取消"
+    bind:close="onCloseShareSheet"
+    bind:cancel	="onCloseShareSheet"
+  >
+    <view class="share-panel">
+      <view bind:tap="shareToFriends" >
+        <button open-type="share">
+          <image src="../../images/send.friends@2x.png" />
+          <view>发送朋友</view>
+        </button>
+      </view>
+      <view bind:tap="generateBook">
+          <image src="../../images/gen.book@2x.png" />
+          <view>生成战书</view>
+      </view>
+    </view>
+  </van-action-sheet>
+
+  <van-dialog
+    use-slot
+    show="{{showBook}}"
+    showConfirmButton="{{false}}"
+    closeOnClickOverlay="{{true}}"
+  >
+    <view class="book-cnt">
+      <!-- https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html -->
+      <!-- <image wx:if="{{ qrCode }}" class="home-toast-img" mode="widthFix" src="{{ qrCode }}" /> -->
+      <view style="position: relative;background: url('../../images/card.png') no-repeat; background-size: 100%">
+        <view class="challenge-detail-mask"></view>
+        <view class="challenge-detail-mask-info" wx:if="{{active !== 2}}" >
+          <image class="avatar" src="../../images/succ.png" />
+          <view class="username">username</view>
+          <van-button type="info"  round size="mini">
+            发起者
+          </van-button>
+        </view>
+      </view>
+
+      <view class="challenge-info">
+        <view class="title">21天挑战计划</view>
+        <view class="table">
+          <view>
+            <view class="top">开始时间</view>
+            <view class="bottom">2019.05.01</view>
+          </view>
+          <view>
+            <view class="top">挑战天数</view>
+            <view class="bottom">21</view>
+          </view>
+          <view>
+            <view class="top">挑战金</view>
+            <view class="bottom f-red">¥300</view>
+          </view>
+        </view>
+        <view class="tips">获胜将者将瓜分总挑战金，来战？</view>
+      </view>
+
+      <view class="book-footer">
+        <image class="home-toast-img" mode="widthFix" src="../../images/gen.book@2x.png" />
+        <!-- <image wx:if="{{ qrCode }}" class="home-toast-img" mode="widthFix" src="../../images/gen.book@2x.png" /> -->
+        <view class="info">
+          <view class="title">51挑战书</view>
+          <view class="tips">长按识别码查看详情</view>
+        </view>
+      </view>
+    </view>
+  </van-dialog>
+
+  <van-dialog id="van-dialog" />
+
+ </view>
