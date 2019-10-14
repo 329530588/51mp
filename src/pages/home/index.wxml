@@ -1,9 +1,9 @@
 
 
  <view class="home">
-    <van-search value="{{ active }}" placeholder="请输入搜索关键词" shape="round" />
+    <van-search value="{{ searchTxt }}" placeholder="请输入搜索关键词" shape="round" />
   
-    <van-tabs active="{{ active }}" bind:change="onChangeTab">
+    <van-tabs active="{{ status }}" bind:change="onChangeTab">
       <van-tab title="进行中"></van-tab>
       <van-tab title="未开始"></van-tab>
       <van-tab title="已结束"></van-tab>
@@ -17,7 +17,7 @@
             <view class="home-card-mask">
             </view>
 
-            <view class="home-card-mask-info" wx:if="{{active !== 2}}" >
+            <view class="home-card-mask-info" wx:if="{{status !== 2}}" >
               <view class="home-card-mask-info-day">
                 已坚持<text class="f-red">2</text>天
               </view>
@@ -27,7 +27,7 @@
               </view>
             </view>
 
-            <view class="home-card-info" wx:if="{{active === 0}}">
+            <view class="home-card-info" wx:if="{{status === 0}}">
               <view class="home-card-info-title" >
                 <view>
                   21天跑步计划
@@ -58,7 +58,7 @@
               </view>
             </view>
 
-            <view class="home-card-info" wx:elif="{{active === 1}}">
+            <view class="home-card-info" wx:elif="{{status === 1}}">
               <view class="home-card-info-title" >
                 <view>
                   21天跑步计划
@@ -80,7 +80,7 @@
               </view>
             </view>
 
-            <view class="home-card-info" wx:else="{{active === 2}}">
+            <view class="home-card-info" wx:else="{{status === 2}}">
               <view class="home-card-info-title" >
                 <view>
                   21天跑步计划
@@ -146,4 +146,7 @@
         </view>
       </view>
     </van-dialog>
+
+    <van-toast id="van-toast" />
+
  </view>

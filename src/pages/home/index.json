@@ -6,7 +6,7 @@
     "van-tab": "../../lib/vanui/dist/tab/index",
     "van-tabs": "../../lib/vanui/dist/tabs/index",
     "van-progress": "../../lib/vanui/dist/progress/index",
-    "van-icon": "../../lib/vanui/dist/icon/index",
+    "van-toast": "../../lib/vanui/dist/toast/index",
     "van-dialog": "../../lib/vanui/dist/dialog/index"
   }
 }

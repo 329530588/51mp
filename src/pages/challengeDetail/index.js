@@ -10,11 +10,12 @@ Page({
     challenge: null // 挑战详情
   },
   async onLoad(query) {
+    const { session } = await getApp().fetchUserInfo();
     wx.request({
       url: `${getApp().SERVER}/challenge/details`,
       data: {
-        challengeId: query.challengeId,
-        userId: query.userId
+        challengeId: query.challengeId, //testid: E23CF781E06C44EA88910145701A177D
+        userId: session
       },
       method: "POST",
       success(res) {

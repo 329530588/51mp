@@ -5,6 +5,7 @@
     "van-radio": "../../lib/vanui/dist/radio/index",
     "van-icon": "../../lib/vanui/dist/icon/index",
     "van-radio-group": "../../lib/vanui/dist/radio-group/index",
+    "van-toast": "../../lib/vanui/dist/toast/index",
     "van-button": "../../lib/vanui/dist/button/index",
     "van-popup": "../../lib/vanui/dist/popup/index",
     "van-datetime-picker": "../../lib/vanui/dist/datetime-picker/index"

@@ -29,6 +29,7 @@
             value="{{ description }}"
             id="description"
             placeholder="必填，500个字以内"
+            bindblur="setChallengeData"
           />
         </view>
       </van-cell-group>
@@ -57,10 +58,10 @@
           bind:tap="toggleDateDrawer"
         />
         <van-field
-          value="{{ totalDays }}"
-          id="totalDays"
+          value="{{ days }}"
+          id="days"
           placeholder="必填，请输入正整数"
-          label="挑战天数"
+          label="打卡天数"
           type="number"
           border
           bind:change="setChallengeData"
@@ -92,9 +93,9 @@
         </view>
 
         <van-field
-          value="{{ days }}"
+          value="{{ totalDays }}"
           placeholder="必填，请输入正整数"
-          id="days"
+          id="totalDays"
           label="累计打卡N天视为成功"
           type="number"
           border
@@ -123,6 +124,7 @@
         id="dateStart"
         value="{{ dateStart }}"
         min-date="{{ minDate }}"
+        bind:cancel="toggleDateDrawer"
         bind:confirm="setDate"
       />
     </van-popup>
@@ -133,6 +135,7 @@
         id="cardStart"
         value="{{ cardStart }}"
         bind:confirm="setStartTime"
+        bind:cancel="toggleStartTimeDrawer"
       />
     </van-popup>
     
@@ -142,7 +145,10 @@
         id="cardEnd"
         value="{{ cardEnd }}"
         bind:confirm="setEndTime"
+        bind:cancel="toggleEndTimeDrawer"
       />
     </van-popup>
+
+    <van-toast id="van-toast" />
 
  </view>

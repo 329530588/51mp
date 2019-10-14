@@ -1,21 +1,32 @@
-
-
-import { sayHello } from 'util/index'
+import Toast from "lib/vanui/dist/toast/toast";
 
 Page({
   data: {
-    searchTxt: 'lalala',
-    active: 2, // 0-未开始，1-进行中，2-已结束
+    searchTxt: "lalala",
+    list: [],
+    status: 0 // 0-未开始，1-进行中，2-已结束
   },
   async onLoad() {
-    const str = await Promise.resolve(sayHello());
-    wx.showToast({
-      title: str
+    const { status } = this.data;
+    const { session } = await getApp().fetchUserInfo();
+    wx.request({
+      url: `${getApp().SERVER}/challenge/mine`,
+      data: {
+        status,
+        userId: session
+      },
+      success(res) {
+        console.log(res);
+        if (res.statusCode === 200 && res.data.code === 1) {
+        } else {
+          Toast(res.data.message);
+        }
+      }
     });
   },
   onChangeTab(e) {
     this.setData({
-      active: e.detail.index
-    })
+      status: e.detail.index
+    });
   }
 });

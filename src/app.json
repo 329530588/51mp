@@ -1,11 +1,11 @@
 {
   "pages":[
-    "pages/challengeDetail/index",
+    "pages/home/index",
     "pages/newChallenge/index",
+    "pages/challengeDetail/index",
     "pages/myMessage/index",
     "pages/withdrawRecord/index",
-    "pages/myProfile/index",
-    "pages/home/index"
+    "pages/myProfile/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
