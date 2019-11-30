@@ -2,11 +2,10 @@
  * @fileOverview app 启动脚本
  * @author sizhao | 870301137@qq.com
  * @version 1.0.0 | 2018-06-29 | sizhao    // 初始版本
-*/
+ */
 
 App({
   onLaunch: function() {
-
     Date.prototype.format = function(fmt) {
       //author: meizz
       var o = {
@@ -33,8 +32,6 @@ App({
           );
       return fmt;
     };
-
-    
   },
   fetchUserInfo: function() {
     const self = this;
@@ -61,37 +58,46 @@ App({
                     success(res) {
                       if (res.statusCode === 200 && res.data.code === 1) {
                         if (res)
-                        resolve({
-                          ...res.data.data.userVO,
-                          session
-                        });
+                          resolve({
+                            ...res.data.data.userVO,
+                            session
+                          });
                         console.log("userInfo:", {
                           ...res.data.data.userVO,
                           session
                         });
                       }
+                    },
+                    fail(err) {
+                      Toast("服务器异常");
                     }
                   });
 
-                  wx.request({
-                    url: `${getApp().SERVER}/user/login`,
-                    method: "POST",
-                    data: {
-                      session: res.data.data.session,
-                      avatar: "",
-                      city: "",
-                      country: "",
-                      nickname: "",
-                      province: "",
-                      sex: ""
-                    },
-                    success(res) {
-                      if (res.statusCode === 200 && res.data.code === 1) {
-                        // if (res) self.user = res.data.data.userVO;
-                      }
-                    }
-                  });
+                  // wx.request({
+                  //   url: `${getApp().SERVER}/user/login`,
+                  //   method: "POST",
+                  //   data: {
+                  //     session: res.data.data.session,
+                  //     avatar: "",
+                  //     city: "",
+                  //     country: "",
+                  //     nickname: "",
+                  //     province: "",
+                  //     sex: ""
+                  //   },
+                  //   success(res) {
+                  //     if (res.statusCode === 200 && res.data.code === 1) {
+                  //       // if (res) self.user = res.data.data.userVO;
+                  //     }
+                  //   },
+                  //   fail(err) {
+                  //     Toast("服务器异常");
+                  //   }
+                  // });
                 }
+              },
+              fail(err) {
+                Toast("服务器异常");
               }
             });
             self.user = res;
@@ -99,12 +105,11 @@ App({
             alter("登录失败！" + res.errMsg);
           }
         },
-        fail(res) {
-          console.error(res);
+        fail(err) {
+          Toast("服务器异常");
         }
       });
-    })
-    
+    });
   },
   user: null,
   SERVER: "http://116.62.241.153:6161"

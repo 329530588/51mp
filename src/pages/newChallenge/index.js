@@ -115,6 +115,9 @@ Page({
         self.setData({
           faceImage: res.tempFilePaths[0]
         });
+      },
+      fail(err) {
+        Toast("服务器异常");
       }
     });
   },
@@ -132,6 +135,7 @@ Page({
       faceImage,
       totalDays
     } = data;
+
     // amount,days,totalDays: number
     if (cardStart >= cardEnd) {
       Toast("开始时间要早于结束时间");
@@ -192,18 +196,20 @@ Page({
             signType,
             paySign,
             success(res) {
-              console.log("payment succ:", res);
               wx.redirectTo({
                 url: `/pages/challengeDetail/index?challengeId=${challengeId}`
               });
             },
             fail(res) {
-              Toast('支付失败');
+              Toast("支付失败");
             }
           });
         } else {
           Toast(res.data.message);
         }
+      },
+      fail(err) {
+        Toast("服务器异常");
       }
     });
   }

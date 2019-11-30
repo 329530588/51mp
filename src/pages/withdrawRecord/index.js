@@ -1,4 +1,4 @@
-
+import Toast from "lib/vanui/dist/toast/toast";
 
 Page({
   data: {

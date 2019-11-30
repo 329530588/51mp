@@ -5,6 +5,7 @@
     "van-search": "../../lib/vanui/dist/search/index",
     "van-action-sheet": "../../lib/vanui/dist/action-sheet/index",
     "van-icon": "../../lib/vanui/dist/icon/index",
+    "van-toast": "../../lib/vanui/dist/toast/index",
     "van-progress": "../../lib/vanui/dist/progress/index",
     "van-dialog": "../../lib/vanui/dist/dialog/index"
   }

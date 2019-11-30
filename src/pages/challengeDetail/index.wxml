@@ -1,53 +1,57 @@
-
-
+ 
  <view class="challenge-detail">
   <view style="background: url('../../images/card.png') no-repeat; background-size: 100%">
     <view class="challenge-detail-mask"></view>
-    <view class="challenge-detail-mask-info" wx:if="{{active !== 2}}" >
+    <view class="challenge-detail-mask-info" wx:if="{{detail.challengeStatus === 0}}" >
       <view class="challenge-detail-mask-info-progress-cnt" >
-        <view style="margin-bottom: 12rpx">进度 7/21天</view>
-        <van-progress percentage="50" class="challenge-detail-mask-info-progress"/>
+        <!-- <view >倒计时：{{detail.challenge.timeLeft}}</view> -->
+      </view>
+    </view>
+    <view class="challenge-detail-mask-info" wx:else >
+      <view class="challenge-detail-mask-info-progress-cnt" >
+        <view style="margin-bottom: 12rpx">进度 {{detail.challenge.totalDays}}/{{detail.challenge.days}}天</view>
+        <van-progress percentage="{{detail.challenge.totalDays/detail.challenge.days*100}}" class="challenge-detail-mask-info-progress"/>
       </view>
     </view>
   </view>
   <view class="challenge-detail-main">
-    <view class="title">21天跑步计划</view>
+    <view class="title">{{detail.challenge.project}}</view>
 
     <view class="info-item">
       <view>
         <van-icon name="flag-o" />
-        开始时间：2019.05.01
+        开始时间：{{detail.challenge.dateStart}}
       </view>
       <view>
         <van-icon name="notes-o" />
-        挑战天数：21天
+        挑战天数：{{detail.challenge.days}}天
       </view>
       <view>
         <van-icon name="clock" />
-        打卡时间：00:00-24:00
+        打卡时间：{{detail.challenge.cardStart}}-{{detail.challenge.cardEnd}}
       </view>
       <view>
         <van-icon name="award-o" />
-        已打卡：4/15人
+        已打卡：{{detail.todayCardCount}}/{{detail.challenge.totalPersons}}人
       </view>
     </view>
 
     <view class="money-info">
       <van-button type="info"  round size="mini">
-        挑战金：¥300
+        挑战金：¥{{detial.challenge.amount}}
       </van-button>
       <van-button type="danger"  round size="mini">
-        奖金池：¥5000
+        奖金池：¥{{detail.payBonus}}
       </van-button>
       <view class="rule" bind:tap="toggleRules">规则</view>
     </view>
 
-    <view class="desc">跑步是日常最方便的有氧运动之一，受到了广大人民群众的喜欢。有些人喜欢夜跑，也有些人喜欢晨跑，但是不管是哪种运动的方式，对于锻炼身体来说，都是有好处的。大多数的运动爱好者已经将跑步看成了生命中的一部分了。对于他们来说，跑步不在乎时间和长短，在意的是收获的好处，在意的是跑步的时候能够将所有的烦恼给跑掉。虽然跑步的好处非常的颇多，但是也是需要注意它的几点禁忌的，下面就一起去了解一下吧！</view>
+    <view class="desc">{{detail.challenge.description}}</view>
 
     <view class="punch-info">
       <view class="title">
         今日打卡情况
-        <view class="note">（已打卡 <text class="f-blue">3</text>  未打卡 <text class="f-red">2</text>）</view>
+        <view class="note">（已打卡 <text class="f-blue">{{ detail.todayCardCount}}</text>  未打卡 <text class="f-red">{{detail.challenge.totalPersons - detail.todayCardCount}}</text>）</view>
       </view>
 
       <view class="punch-list">
@@ -69,9 +73,9 @@
 
   </view>
 
-  <view class="footer" wx:if="{{0}}">
+  <view class="footer" wx:if="{{ detail.join && detail.challengeStatus === 1}}">
     <!-- 打卡 -->
-    <van-button class="gray-btn" type="info" block>
+    <van-button class="gray-btn" type="info" open-type="share" block>
       分享战况
     </van-button>
     <van-button type="info" block bind:tap="addCardRecord">
@@ -79,15 +83,16 @@
     </van-button>
   </view>
 
-  <view class="footer" wx:elif="{{0}}">
-    <!-- 被邀请方 -->
+  <view class="footer" wx:if="{{!detail.join && !detail.challengeStatus}}">
+    <!-- 被邀请方: 未开始且未加入 -->
     <van-button type="info" block bind:tap="participateIn">
       我要挑战
     </van-button>
   </view>
 
-  <view class="footer" wx:else>
-    <!-- 发起方 -->
+
+  <view class="footer" wx:if="{{!detail.challengeStatus && detail.creator}}">
+    <!-- 发起方: 未开始且为创建者 -->
     <van-button class="gray-btn" type="info" block bind:tap="deleteChallenge">
       删除挑战
     </van-button>
@@ -107,12 +112,12 @@
       <view bind:tap="shareToFriends" >
         <button open-type="share">
           <image src="../../images/send.friends@2x.png" />
-          <view>发送朋友</view>
         </button>
+          <view>发送朋友</view>
       </view>
       <view bind:tap="generateBook">
-          <image src="../../images/gen.book@2x.png" />
-          <view>生成战书</view>
+        <image src="../../images/gen.book@2x.png" />
+        <view>生成战书</view>
       </view>
     </view>
   </van-action-sheet>
@@ -168,5 +173,6 @@
   </van-dialog>
 
   <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
 
  </view>

@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/home/index",
-    "pages/newChallenge/index",
-    "pages/challengeDetail/index",
     "pages/myMessage/index",
+    "pages/challengeDetail/index",
+    "pages/newChallenge/index",
     "pages/withdrawRecord/index",
     "pages/myProfile/index"
   ],

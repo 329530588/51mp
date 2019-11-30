@@ -10,4 +10,5 @@
       </view>
       <view class="money {{ 300 > 0 ? 'f-blue' : '' }}">-300.00</view>
     </view> 
+    <van-toast id="van-toast" />
  </view>

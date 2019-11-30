@@ -4,16 +4,16 @@
     <van-search value="{{ searchTxt }}" placeholder="请输入搜索关键词" shape="round" />
   
     <van-tabs active="{{ status }}" bind:change="onChangeTab">
-      <van-tab title="进行中"></van-tab>
       <van-tab title="未开始"></van-tab>
+      <van-tab title="进行中"></van-tab>
       <van-tab title="已结束"></van-tab>
     </van-tabs>
 
     <view 
-      wx:if="{{[1,3,3,3,3].length}}"  
+      wx:if="{{ list.length}}"  
      > 
-        <navigator url="/pages/challengeDetail/index">
-          <view class="home-card" wx:for="{{[1,3,3,3,3]}}" style="background: url('../../images/card.png') no-repeat; background-size: 100%">
+        <navigator wx:for="{{ list }}" url="/pages/challengeDetail/index?challengeId={{ item.challengeId }}">
+          <view class="home-card"  style="background: url('{{ item.faceImage }}') no-repeat; background-size: 100%">
             <view class="home-card-mask">
             </view>
 
@@ -22,16 +22,16 @@
                 已坚持<text class="f-red">2</text>天
               </view>
               <view class="home-card-mask-info-progress-cnt" >
-                <view>进度 7/21天</view>
+                <view>进度 {{1}}/{{2}}天</view>
                 <van-progress percentage="50" class="home-card-mask-info-progress"/>
               </view>
             </view>
 
-            <view class="home-card-info" wx:if="{{status === 0}}">
+            <view class="home-card-info" wx:if="{{status === 1}}">
               <view class="home-card-info-title" >
                 <view>
-                  21天跑步计划
-                  <text class="f-red f-size12">（奖金池: ¥3000）</text>
+                 {{ item.project }}
+                  <text class="f-red f-size12">（奖金池: ¥{{ item.amount }}）</text>
                 </view>
                 <van-button type="info"  round size="mini">
                   打卡
@@ -49,7 +49,7 @@
               <view class="home-card-info-detail">
                 <view>
                   <van-icon name="clock-o" />
-                  打卡时间：00:00-24:00
+                  打卡时间：{{ item.cardStart }}-{{ item.cardEnd }}
                 </view>
                 <view>
                   <van-icon name="completed" />
@@ -58,24 +58,24 @@
               </view>
             </view>
 
-            <view class="home-card-info" wx:elif="{{status === 1}}">
+            <view class="home-card-info" wx:elif="{{status === 0}}">
               <view class="home-card-info-title" >
                 <view>
-                  21天跑步计划
+                  {{ item.project }}
                 </view>
                 <view class="f-size12 f-gray">
                   <van-icon name="gold-coin" />
-                  契约金 ¥30
+                  契约金 ¥{{ item.amount }}
                 </view>
               </view>
               <view class="home-card-info-detail">
                 <view>
                   <van-icon name="flag-o" />
-                  开始时间：2019.05.01
+                  开始时间：{{ item.dateStart }}
                 </view>
                 <view>
                   <van-icon name="user-o" />
-                  已参与：201人
+                  已参与：{{ item.totalPersons }}人
                 </view>
               </view>
             </view>
@@ -83,7 +83,7 @@
             <view class="home-card-info" wx:else="{{status === 2}}">
               <view class="home-card-info-title" >
                 <view>
-                  21天跑步计划
+                  {{ item.project }}
                 </view>
                 <image class="home-card-info-title-img" wx:if="{{1}}" src="../../images/succ.png" />
                 <image class="home-card-info-title-img" wx:else src="../../images/fail.png" />
@@ -91,11 +91,11 @@
               <view class="home-card-info-detail">
                 <view>
                   <van-icon name="star" />
-                  成功：13人 失败：5人
+                  成功：{{ item.success }}人 失败：{{ item.failure }}人
                 </view>
                 <view>
                   <van-icon name="gold-coin" />
-                  奖金：<text class="{{ 1 ? 'f-blue' : 'f-red' }}">¥30</text>
+                  奖金：<text class="{{ 1 ? 'f-blue' : 'f-red' }}">¥{{ item.bonus }}</text>
                 </view>
               </view>
             </view>

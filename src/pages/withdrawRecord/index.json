@@ -3,6 +3,7 @@
   "usingComponents": {
     "van-button": "../../lib/vanui/dist/button/index",
     "van-search": "../../lib/vanui/dist/search/index",
+    "van-toast": "../../lib/vanui/dist/toast/index",
     "van-tab": "../../lib/vanui/dist/tab/index",
     "van-tabs": "../../lib/vanui/dist/tabs/index",
     "van-dialog": "../../lib/vanui/dist/dialog/index"
